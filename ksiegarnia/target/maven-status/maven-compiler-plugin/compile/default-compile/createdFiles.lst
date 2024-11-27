@@ -1,0 +1,12 @@
+com\mycompany\dao\UzytkownikDAO.class
+com\mycompany\entities\Autor.class
+com\mycompany\entities\Zamowienie.class
+com\mycompany\entities\Katalog.class
+com\mycompany\entities\Uzytkownik.class
+com\mycompany\entities\Rola.class
+com\mycompany\entities\ZamowienieProdukt.class
+com\mycompany\uzytkownik\UzytkownikEditBB.class
+com\mycompany\uzytkownik\UzytkownikListBB.class
+com\mycompany\uzytkownik\UzytkownikEditGETBB.class
+com\mycompany\entities\Produkt.class
+com\mycompany\entities\AdresDostawy.class

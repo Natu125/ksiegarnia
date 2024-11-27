@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+    <h:head>
+        <meta charset="utf-8" />
+        <title>JSF 06 - EJB, bazy danych (mapowanie obiektowo-relacyjne)</title>
+    </h:head>
+    <h:body style="background-color: #eee; margin: 0.5em;">
+
+        <p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
+                 style="margin-bottom: 1em;">
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel value="nazwisko:" />
+                    <p:inputText value="#{uzytkownikListBB.nazwisko}" />
+                    <p:commandButton value="Szukaj" update="form-table" />
+                </h:panelGrid>
+            </h:form>
+        </p:panel>
+
+        <p:messages />
+
+        <h:form id="form-table" style="margin-bottom:1em;">
+
+            <p:commandButton value="Dodaj nową osobę" style="margin-bottom:1em;" 
+                             action="#{uzytkownikListBB.newUzytkownik()}"/>
+
+            <p:dataTable value="#{uzytkownikListBB.list}" var="u">
+
+                <p:column responsivePriority="5">
+                    <f:facet name="header">
+                        <h:outputText value="imię" />
+                    </f:facet>
+                    <h:outputText value="#{u.imie}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="nazwisko" />
+                    </f:facet>
+                    <h:outputText value="#{u.nazwisko}" />
+                </p:column>
+
+                
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="opcje" />
+                    </f:facet>
+
+                    <p:commandButton value="Edytuj" style="margin-right: 0.5em"
+                                     action="#{uzytkownikListBB.editUzytkownik(u)}"/>
+
+                    <p:commandButton value="Usuń" style="margin-right: 0.5em"
+                                     action="#{uzytkownikListBB.deleteUzytkownik(u)}"
+                                     update="@form" />
+
+                    <p:button outcome="uzytkownikEditGET" value="Edytuj (GET)">
+                        <f:param name="u" value="#{u.idUzytkownika}" />
+                    </p:button>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+
+    </h:body>
+</html>

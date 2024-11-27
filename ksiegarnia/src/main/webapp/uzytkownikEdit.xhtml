@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+    <f:metadata>
+        <f:viewAction action="#{uzytkownikEditBB.onLoad()}" />
+    </f:metadata>
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <title>JSF 06 - EJB, bazy danych (mapowanie obiektowo-relacyjne)</title>
+    </h:head>
+
+    <h:body style="background-color: #eee; margin: 0.5em;">
+
+        <p:panel toggleable="true" header="Edycja rekordu">
+
+            <h:form rendered="#{uzytkownikEditBB.uzytkownik != null}">
+                <h:panelGrid columns="3" cellpadding="5">
+
+                    <h:outputLabel for="u-imie" value="imię:" />
+                    <p:inputText id="u-imie" value="#{uzytkownikEditBB.uzytkownik.imie}"
+                                 required="true" requiredMessage="Podaj imię"
+                                 validatorMessage="co najwyżej 35 znaków">
+                        <f:validateLength maximum="35" />
+                    </p:inputText>
+                    <p:message for="u-imie" display="icon"/>
+
+                    <h:outputLabel for="u-nazwisko" value="nazwisko:" />
+                    <p:inputText id="u-nazwisko" value="#{uzytkownikEditBB.uzytkownik.nazwisko}"
+                                 required="true" requiredMessage="podaj nazwisko"
+                                 validatorMessage="co najwyżej 35 znaków">
+                        <f:validateLength maximum="35" />
+                    </p:inputText>
+                    <p:message for="u-nazwisko" display="icon"/>
+
+                    
+                </h:panelGrid>
+
+                <p:messages id="msgs" />
+
+                <p:commandButton value="Zapisz" action="#{uzytkownikEditBB.saveData()}"
+                                 style="margin-right: 1em;" update="@form" />
+
+                <p:button value="Anuluj" outcome="uzytkownikList" />
+            </h:form>
+
+        </p:panel>
+
+    </h:body>
+
+</html>
