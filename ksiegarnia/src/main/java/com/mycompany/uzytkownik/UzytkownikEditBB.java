@@ -76,11 +76,10 @@ public class UzytkownikEditBB implements Serializable {
 				uzytkownikDAO.merge(uzytkownik);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "wystąpił błąd podczas zapisu", null));
-			return PAGE_STAY_AT_THE_SAME;
-		}
+        e.printStackTrace(); // Wyświetlenie szczegółowego błędu w konsoli
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wystąpił błąd: " + e.getMessage(), null));
+        return PAGE_STAY_AT_THE_SAME;
+    }
 
 		return PAGE_UZYTKOWNIK_LIST;
 	}

@@ -37,6 +37,20 @@
                         <f:validateLength maximum="35" />
                     </p:inputText>
                     <p:message for="u-nazwisko" display="icon"/>
+                    
+                    <h:outputLabel for="u-email" value="Email:" />
+<p:inputText id="u-email" value="#{uzytkownikEditBB.uzytkownik.email}" 
+             required="true" requiredMessage="Podaj email"
+             validatorMessage="Nieprawidłowy email">
+    <f:validateRegex pattern="^.+@.+\..+$" />
+</p:inputText>
+<p:message for="u-email" display="icon"/>
+
+<h:outputLabel for="u-haslo" value="Hasło:" />
+<p:password id="u-haslo" value="#{uzytkownikEditBB.uzytkownik.haslo}"
+            required="true" requiredMessage="Podaj hasło" />
+<p:message for="u-haslo" display="icon"/>
+
 
                     
                 </h:panelGrid>
