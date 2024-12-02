@@ -31,41 +31,49 @@
                              action="#{uzytkownikListBB.newUzytkownik()}"/>
 
             <p:dataTable value="#{uzytkownikListBB.list}" var="u">
+    <p:column responsivePriority="5">
+        <f:facet name="header">
+            <h:outputText value="Imię" />
+        </f:facet>
+        <h:outputText value="#{u.imie}" />
+    </p:column>
 
-                <p:column responsivePriority="5">
-                    <f:facet name="header">
-                        <h:outputText value="imię" />
-                    </f:facet>
-                    <h:outputText value="#{u.imie}" />
-                </p:column>
+    <p:column>
+        <f:facet name="header">
+            <h:outputText value="Nazwisko" />
+        </f:facet>
+        <h:outputText value="#{u.nazwisko}" />
+    </p:column>
 
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="nazwisko" />
-                    </f:facet>
-                    <h:outputText value="#{u.nazwisko}" />
-                </p:column>
+    <p:column>
+        <f:facet name="header">
+            <h:outputText value="Email" />
+        </f:facet>
+        <h:outputText value="#{u.email}" />
+    </p:column>
 
-                
+    <p:column>
+        <f:facet name="header">
+            <h:outputText value="Data rejestracji" />
+        </f:facet>
+        <h:outputText value="#{u.dataRejestracji}" />
+    </p:column>
 
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="opcje" />
-                    </f:facet>
+    <p:column>
+        <f:facet name="header">
+            <h:outputText value="Opcje" />
+        </f:facet>
+        <p:commandButton value="Edytuj" style="margin-right: 0.5em"
+                         action="#{uzytkownikListBB.editUzytkownik(u)}"/>
+        <p:commandButton value="Usuń" style="margin-right: 0.5em"
+                         action="#{uzytkownikListBB.deleteUzytkownik(u)}"
+                         update="@form" />
+        <p:button outcome="uzytkownikEditGET" value="Edytuj (GET)">
+            <f:param name="u" value="#{u.idUzytkownika}" />
+        </p:button>
+    </p:column>
+</p:dataTable>
 
-                    <p:commandButton value="Edytuj" style="margin-right: 0.5em"
-                                     action="#{uzytkownikListBB.editUzytkownik(u)}"/>
-
-                    <p:commandButton value="Usuń" style="margin-right: 0.5em"
-                                     action="#{uzytkownikListBB.deleteUzytkownik(u)}"
-                                     update="@form" />
-
-                    <p:button outcome="uzytkownikEditGET" value="Edytuj (GET)">
-                        <f:param name="u" value="#{u.idUzytkownika}" />
-                    </p:button>
-                </p:column>
-
-            </p:dataTable>
         </h:form>
 
     </h:body>
